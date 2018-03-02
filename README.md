@@ -26,8 +26,7 @@ The above step can be run inside a container (helps with the cleanup)
 
 ```bash
 docker run --privileged -it centos bash
-git clone https://github.com/networkop/arista-ceos-topo
-cd arista-ceos-topo/arista-ceos-files/libnetwork-patch/
+git clone https://github.com/networkop/libnetwork-multinet.git && cd libnetwork-multinet
 chmod +x ./build.sh && ./build.sh
 ```
 
