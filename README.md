@@ -1,4 +1,4 @@
-# Building a customer docker daemon with blackjack and deterministric network order
+# Building a custom docker daemon with blackjack and deterministric network order
 
 Default implementation of docker networking (libnetwork) uses heap
 data structure to store pointers to all connected networks. This makes
