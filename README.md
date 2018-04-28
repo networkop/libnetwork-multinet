@@ -34,7 +34,7 @@ The resulting files can be found outside of container:
 
 ```bash
 # find /var/lib/docker -name dockerd
-/var/lib/docker/overlay2/c4462f073f8bf3774c9269443356a8b02f04f700e78ff5d4ad6fc860fbd134dd/diff/libnetwork-multinet/docker/bundles/binary-daemon/dockerd
+var/lib/docker/overlay2/22ed554543dc9efb1bee699bcc09917bbe59f5ae42b39a1c71a5b94f4f67dbf5/diff/docker/bundles/binary-daemon/dockerd /usr/bin/dockerd
 ```
 
 ## Replacing the existing docker daemon with the patched one
@@ -44,7 +44,7 @@ yum install which -y
 systemctl stop docker.service
 DOCKERD=$(which dockerd)
 mv $DOCKERD $DOCKERD-old
-cp docker/bundles/latest/binary-daemon/dockerd $DOCKERD
+cp docker/bundles/latest/binary-daemon/dockerd-dev $DOCKERD
 systemctl start docker.service
 ```
 

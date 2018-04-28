@@ -17,28 +17,11 @@ git clone --depth=1 https://github.com/docker/docker.git
 cd docker
 
 # Just using VNDR didn't work for me
-# go get github.com/LK4D4/vndr
-# vndr github.com/docker/libnetwork d047825d4d156bc4cf01bfe410cb61b3bc33f572 https://github.com/cziebuhr/libnetwork.git
 # So I'm doing the same thing manually
 
-git clone https://github.com/cziebuhr/libnetwork.git temp
-cd temp
-git checkout d047825d4d156bc4cf01bfe410cb61b3bc33f572
-
-# Some minor path of the patch (not sure why this was needed)
-
-cat << EOF > ./ipam.patch
-224c224
-<       if err = initIPAMDrivers(drvRegistry, nil, c.getStore(datastore.GlobalScope)); err != nil {
----
->       if err = initIPAMDrivers(drvRegistry, nil, c.getStore(datastore.GlobalScope), c.cfg.Daemon.DefaultAddressPool); err != nil {
-EOF
-
-patch -lt controller.go ipam.patch
-
-# Finally overwriting the original files with the patched ones
-/usr/bin/cp controller.go endpoint.go sandbox.go sandbox_store.go ../vendor/github.com/docker/libnetwork/
-cd ../
+cd vendor/github.com/docker/libnetwork/
+wget https://github.com/docker/libnetwork/pull/2103.patch
+patch -b < 2103.patch 
 
 # Building docker
 # This may require up to 100G of free disk space
