@@ -48,6 +48,8 @@ cp docker/bundles/latest/binary-daemon/dockerd-dev $DOCKERD
 systemctl start docker.service
 ```
 
+Make sure that SELinux security context on both $DOCKERD and $DOCKERD-old are the same 
+
 ## Testing
 
 Need to create networks with more than 3 interfaces to
