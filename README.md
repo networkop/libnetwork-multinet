@@ -44,7 +44,7 @@ yum install which -y
 systemctl stop docker.service
 DOCKERD=$(which dockerd)
 mv $DOCKERD $DOCKERD-old
-cp docker/bundles/latest/binary-daemon/dockerd-dev $DOCKERD
+cp docker/bundles/latest/binary-daemon/dockerd $DOCKERD
 systemctl start docker.service
 ```
 
